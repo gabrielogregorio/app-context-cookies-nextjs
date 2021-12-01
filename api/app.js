@@ -11,9 +11,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  return res.json({ username, password })
+  return res.json({ email, password })
 });
 
 module.exports = app

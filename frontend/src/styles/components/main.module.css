@@ -1,0 +1,12 @@
+.main {
+  flex: 1;
+  margin: auto;
+  padding: 0 2%;
+  max-width: 1280px;
+  width: 100%;
+  background: #fff;
+}
+
+.dark {
+  background: rgb(83, 83, 83)
+}

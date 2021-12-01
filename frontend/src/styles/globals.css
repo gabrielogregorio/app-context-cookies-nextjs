@@ -1,9 +1,23 @@
+:root {
+  --linear-navbar: linear-gradient(70deg, #53acff, #2f8efa);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+}
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {

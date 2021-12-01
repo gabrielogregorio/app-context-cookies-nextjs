@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  background: var(--linear-navbar);
+  backdrop-filter: blur(20px);
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar__logo {
+  color: white;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.navbar__items {
+  display: flex;
+}
+
+.navbar__item {
+  display: flex;
+  list-style: none;
+}
+
+.navbar__link {
+  padding: 1rem 1.5rem;
+  transition: 0.2s;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.navbar__link:hover {
+  background: #11baee;
+}
+
+.navbar__link a {
+  text-decoration: none;
+}

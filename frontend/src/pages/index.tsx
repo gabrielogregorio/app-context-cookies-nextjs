@@ -1,27 +1,27 @@
-import Axios from 'axios'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { useState } from 'react'
-import Input from '../components/elements/input'
-import Api from '../core/services/api'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useState } from "react";
+import Input from "../components/elements/input";
+import Api from "../core/services/api";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [ password, setPassword ] = useState('');
-  const [ email, setEmail ] = useState('');
-  
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   function handleSubmit(event: any) {
-    Axios.post('localhost:3333/login', {
+    Api.post("login", {
       password,
-      email
-    }).then(res => {
-      console.log(res.data)
-    }).catch(error => {
-      console.log(error)
+      email,
     })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     event.preventDefault();
   }
-
 
   return (
     <div className={styles.container}>
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           value={email}
           setValue={setEmail}
         />
-      
+
         <Input
           type="password"
           name="password"
@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         <input type="submit" value="Fazer Login" />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
