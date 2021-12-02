@@ -14,8 +14,11 @@ const Home: NextPage = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   function handleSubmit(event: any) {
+    setLoading(true);
     Api.post('/login', {
       password,
       email,
@@ -25,9 +28,13 @@ const Home: NextPage = () => {
           maxAge: daysInSeconds(1),
           path: '/', // disponível a partir de
         });
+        setLoading(false);
         router.push('/home');
       })
-      .catch(() => {});
+      .catch(() => {
+        setError('Algo deu errado, será que foi o usuário ou senha inválidos');
+        setLoading(false);
+      });
     event.preventDefault();
   }
 
@@ -42,6 +49,9 @@ const Home: NextPage = () => {
       <h1 className={styles.title}>Você precisa fazer login</h1>
 
       <p>admin admin e confirma</p>
+
+      {error !== '' ? <p>{error}</p> : null}
+      {loading ? <p>Loading...</p> : null}
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <Input
