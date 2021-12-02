@@ -1,28 +1,34 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { useState } from "react";
-import Input from "../components/elements/input";
-import Api from "../core/services/api";
-import styles from "../styles/Home.module.css";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { setCookie } from 'nookies';
+import { useState } from 'react';
+import Button from '../components/elements/button';
+import Input from '../components/elements/input';
+import { daysInSeconds } from '../core/helpers/daysInSeconds';
+import Api from '../core/services/api';
+import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const router = useRouter();
 
   function handleSubmit(event: any) {
-    Api.post("login", {
+    Api.post('/login', {
       password,
       email,
     })
       .then((res) => {
-        console.log(res.data);
+        setCookie(null, 'TOKEN_JWT', res.data.token, {
+          maxAge: daysInSeconds(1),
+          path: '/', // disponível a partir de
+        });
+        router.push('/home');
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
     event.preventDefault();
   }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -34,7 +40,7 @@ const Home: NextPage = () => {
 
       <form onSubmit={handleSubmit}>
         <Input
-          type="email"
+          type="text"
           name="email"
           label="Digite seu email"
           value={email}

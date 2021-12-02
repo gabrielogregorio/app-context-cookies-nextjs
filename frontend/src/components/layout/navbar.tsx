@@ -1,6 +1,15 @@
-import styles from "../../styles/components/navbar.module.css";
+import { destroyCookie } from 'nookies';
+import styles from '../../styles/components/navbar.module.css';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
+  const router = useRouter();
+  function onClickExit(e: any) {
+    destroyCookie(null, 'TOKEN_JWT');
+    router.push('/');
+    e.preventDefault();
+  }
+
   return (
     <nav className={styles.navbar}>
       <a href="#" className={styles.navbar__logo}>
@@ -10,7 +19,9 @@ export default function Navbar() {
       <div className={styles.navbar__items}>
         <ul className={styles.navbar__item}>
           <li className={styles.navbar__link}>
-            <a href="#">Sair</a>
+            <button type="button" onClick={(e) => onClickExit(e)}>
+              Sair
+            </button>
           </li>
         </ul>
       </div>
