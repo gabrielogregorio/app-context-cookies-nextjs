@@ -1,13 +1,20 @@
 .navbar {
   display: flex;
   background: var(--linear-navbar);
+  color: var(--color);
   backdrop-filter: blur(20px);
   align-items: center;
   justify-content: space-around;
+  transition: .2s;
+} 
+
+.navbar.dark {
+  background: var(--linear-navbar-dark);
+  color: var(--color-dark);
 }
 
 .navbar__logo {
-  color: white;
+  color: inherit;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -22,17 +29,23 @@
 }
 
 .navbar__link {
-  padding: 1rem 1.5rem;
   transition: 0.2s;
   border-radius: 1.5rem;
   cursor: pointer;
-  color: white;
+  color: inherit;
 }
 
 .navbar__link:hover {
-  background: #11baee;
+  background: var(--bg-hover);
 }
 
-.navbar__link a {
+.navbar__link button {
+  background: transparent;
   text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
 }

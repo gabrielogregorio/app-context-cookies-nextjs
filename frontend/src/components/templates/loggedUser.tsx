@@ -2,16 +2,15 @@ import React from 'react';
 import Footer from '../layout/footer';
 import Navbar from '../layout/navbar';
 import styles from '../../styles/components/main.module.css';
+import { useThemeContext } from '../../core/contexts/ThemeContext';
 
 interface LoggedUserInterface {
   children: any;
-  theme: string;
 }
 
-export default function LoggedUserTemplate({
-  children,
-  theme,
-}: LoggedUserInterface) {
+export default function LoggedUserTemplate({ children }: LoggedUserInterface) {
+  const { theme } = useThemeContext();
+
   return (
     <>
       <Navbar />

@@ -1,5 +1,9 @@
 :root {
-  --linear-navbar: linear-gradient(70deg, #53acff, #2f8efa);
+  --linear-navbar: #FFF9F5;
+  --color: #292929;
+  --linear-navbar-dark: #292929;
+  --color-dark: #FFF9F5;
+  --bg-hover: #ffac3f44
 }
 
 html,
@@ -11,7 +15,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #eee;
 }
 
 #__next {

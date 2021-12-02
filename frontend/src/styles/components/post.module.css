@@ -1,0 +1,16 @@
+.post {
+    border: 2px solid var(--linear-navbar-dark);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: .2s;
+    margin: 1rem;
+}
+
+.post.dark {
+    border: 2px solid var(--linear-navbar);    
+}
+
+.post:hover {
+    background: var(--bg-hover);
+}

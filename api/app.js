@@ -31,10 +31,10 @@ app.get('/auth', userAuth, (req, res) => {
 app.get('/posts',userAuth, (req, res) => {
   setTimeout(() => {
     return res.json([
-      {id: 1, title:"post1"},
-      {id: 2, title:"post2"},
-      {id: 3, title:"post3"},
-      {id: 4, title:"post4"},
+      {id: 1, title: "typesetting industr standard", body:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."},
+      {id: 2, title: "its layout reader of since", body:"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. "},
+      {id: 3, title: "in so variations", body:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some"},
+      {id: 4, title: "those intereste", body:"The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."},
     ])
   }, 2000)
 })

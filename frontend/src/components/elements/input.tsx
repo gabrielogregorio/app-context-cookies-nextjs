@@ -1,4 +1,5 @@
-import { typeInput } from "../../core/types/basics";
+import { typeInput } from '../../core/types/basics';
+import styles from '../../styles/components/input.module.css';
 
 interface InputInterface {
   type: typeInput;
@@ -17,8 +18,11 @@ export default function Input({
 }: InputInterface) {
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label className={styles.label} htmlFor={name}>
+        {label}
+      </label>
       <input
+        className={styles.input}
         type={type}
         id={name}
         name={name}

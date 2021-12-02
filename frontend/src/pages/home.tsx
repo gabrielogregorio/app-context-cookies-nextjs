@@ -1,42 +1,21 @@
 import { parseCookies } from 'nookies';
-import { useEffect, useState } from 'react';
 import LoggedUserTemplate from '../components/templates/loggedUser';
-import { SetThemeCookies } from '../core/services/cookie';
 import Api from '../core/services/api';
 import usePosts from '../core/hooks/usePosts';
 import { Loading } from '../components/elements/loading';
+import { useThemeContext } from '../core/contexts/ThemeContext';
+import { Posts } from '../components/page/Posts';
 
 export default function Home(props: any) {
-  const [theme, setTheme] = useState<string>(props.USER_THEME);
   const { posts, loading, error } = usePosts();
 
-  const handleClickTheme = () => {
-    if (theme === 'DARK') {
-      SetThemeCookies('USER_THEME', 'LiGHT', 300);
-      setTheme('LiGHT');
-      return;
-    }
-    SetThemeCookies('USER_THEME', 'DARK', 300);
-    setTheme('DARK');
-  };
   return (
-    <LoggedUserTemplate theme={theme}>
+    <LoggedUserTemplate>
       <h1>Home Page</h1>
-
-      <p>Theme {theme}</p>
 
       {loading !== 'finish' ? <Loading /> : null}
 
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.id}</h2>
-          <p>{post.title}</p>
-        </div>
-      ))}
-
-      <button onClick={() => handleClickTheme()} type="button">
-        Trocar Tema
-      </button>
+      <Posts posts={posts} />
     </LoggedUserTemplate>
   );
 }
@@ -57,8 +36,6 @@ export async function getServerSideProps(context: any) {
   }
 
   return {
-    props: {
-      USER_THEME: cookies.USER_THEME || 'DARK',
-    },
+    props: {},
   };
 }

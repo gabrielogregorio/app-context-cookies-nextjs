@@ -18,7 +18,7 @@ module.exports = ( req, res, next ) => {
     return next()
 
   } catch(error) {
-    res.sendStatus(403)
+    res.statusCode = 403
     return res.json({msg: 'JWT expired!'})
   }
 }

@@ -1,12 +1,16 @@
 .main {
   flex: 1;
-  margin: auto;
   padding: 0 2%;
-  max-width: 1280px;
   width: 100%;
-  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: var(--linear-navbar);
+  color: var(--color);
+  transition: .2s;
 }
 
 .dark {
-  background: rgb(83, 83, 83)
+  background: var(--linear-navbar-dark);
+  color: var(--color-dark);
 }
