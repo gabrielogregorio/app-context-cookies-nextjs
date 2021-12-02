@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
+  if(email !== 'admin' && password !== 'admin') {
+    return res.sendStatus(403)
+  }
+
   try {
     const token = jwt.sign({ email }, process.env.TOKEN_JWT, { expiresIn: '1h' });
     return res.json({ token, success: true })

@@ -1,31 +1,43 @@
-import { destroyCookie } from 'nookies';
 import styles from '../../styles/components/navbar.module.css';
+import { destroyCookie } from 'nookies';
 import { useRouter } from 'next/router';
 import { useThemeContext } from '../../core/contexts/ThemeContext';
-import { SetThemeCookies } from '../../core/services/cookie';
+import { defineThemeCookies } from '../../core/services/cookie';
+import { cookiesNames } from '../../core/types/cookies';
+import { themeNamesEnum } from '../../core/types/themes';
+
+const DAYS_EXPIRE_THEME_TOKEN = 300;
 
 export default function Navbar() {
   const { theme, setTheme } = useThemeContext();
 
   const router = useRouter();
   function onClickExit(e: any) {
-    destroyCookie(null, 'TOKEN_JWT');
+    destroyCookie(null, cookiesNames.TOKEN_JWT);
     router.push('/');
     e.preventDefault();
   }
 
   const handleClickTheme = () => {
-    if (theme === 'DARK') {
-      SetThemeCookies('USER_THEME', 'LiGHT', 300);
-      setTheme('LiGHT');
+    if (theme === themeNamesEnum.DARK) {
+      defineThemeCookies(
+        cookiesNames.USER_THEME,
+        themeNamesEnum.LIGHT,
+        DAYS_EXPIRE_THEME_TOKEN,
+      );
+      setTheme(themeNamesEnum.LIGHT);
       return;
     }
-    SetThemeCookies('USER_THEME', 'DARK', 300);
-    setTheme('DARK');
+    defineThemeCookies(
+      cookiesNames.USER_THEME,
+      themeNamesEnum.DARK,
+      DAYS_EXPIRE_THEME_TOKEN,
+    );
+    setTheme(themeNamesEnum.DARK);
   };
 
   return (
-    <nav className={`${styles.navbar} ${theme === 'DARK' ? styles.dark : ''}`}>
+    <nav className={styles.navbar}>
       <a href="#" className={styles.navbar__logo}>
         Logomarca
       </a>

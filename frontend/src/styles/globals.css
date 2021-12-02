@@ -1,9 +1,16 @@
 :root {
   --linear-navbar: #FFF9F5;
   --color: #292929;
-  --linear-navbar-dark: #292929;
-  --color-dark: #FFF9F5;
-  --bg-hover: #ffac3f44
+  --bg-hover: #ffac3f44;
+  --border-color: #292929;
+}
+
+.dark {
+  --linear-navbar: #292929;
+  --color: #FFF9F5;
+  --bg-hover: #ffac3f44;
+  --border-color: #FFF9F5;
+
 }
 
 html,
@@ -17,7 +24,7 @@ body {
   flex-direction: column;
 }
 
-#__next {
+#__next, .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

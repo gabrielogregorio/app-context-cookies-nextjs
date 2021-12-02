@@ -10,7 +10,7 @@ export function Posts({ posts }: postsInterface) {
   return (
     <div className={styles.posts}>
       {posts.map((post) => (
-        <Post key={post.id} id={post.id} title={post.title} body={post.body} />
+        <Post key={post.id} title={post.title} body={post.body} />
       ))}
     </div>
   );

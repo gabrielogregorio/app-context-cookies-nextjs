@@ -12,5 +12,7 @@
     margin-bottom: .5rem;
     padding: .5rem .5rem;
     background: inherit;
-    border: 1px solid indianred;
+    border: 1px solid var(--border-color);
+    color: var(--color);
+    font-size: 1.2rem;
 }

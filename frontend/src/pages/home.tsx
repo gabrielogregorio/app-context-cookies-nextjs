@@ -1,12 +1,11 @@
 import { parseCookies } from 'nookies';
-import LoggedUserTemplate from '../components/templates/loggedUser';
-import Api from '../core/services/api';
-import usePosts from '../core/hooks/usePosts';
 import { Loading } from '../components/elements/loading';
-import { useThemeContext } from '../core/contexts/ThemeContext';
 import { Posts } from '../components/page/Posts';
+import Api from '../core/services/api';
+import LoggedUserTemplate from '../components/templates/loggedUser';
+import usePosts from '../core/hooks/usePosts';
 
-export default function Home(props: any) {
+export default function Home() {
   const { posts, loading, error } = usePosts();
 
   return (
@@ -14,6 +13,8 @@ export default function Home(props: any) {
       <h1>Home Page</h1>
 
       {loading !== 'finish' ? <Loading /> : null}
+
+      {error ? <p>Erro ao buscar posts</p> : null}
 
       <Posts posts={posts} />
     </LoggedUserTemplate>

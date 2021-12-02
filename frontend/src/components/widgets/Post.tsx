@@ -1,19 +1,15 @@
-import { useThemeContext } from '../../core/contexts/ThemeContext';
 import styles from '../../styles/components/post.module.css';
 
 interface PostInterface {
-  id: number;
   title: string;
   body: string;
 }
 
-export function Post({ id, title, body }: PostInterface) {
-  const { theme } = useThemeContext();
-
+export function Post({ title, body }: PostInterface) {
   return (
-    <div className={`${styles.post} ${theme === 'DARK' ? styles.dark : ''}`}>
+    <div className={styles.post}>
       <h3>{title}</h3>
-      <p>id = {body}</p>
+      <p>{body}</p>
     </div>
   );
 }

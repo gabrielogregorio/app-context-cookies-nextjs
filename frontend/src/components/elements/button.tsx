@@ -1,12 +1,3 @@
-interface buttonProps {
-  props: any;
-  children: any;
-}
-
-export default function Button({ children, ...props }: buttonProps) {
-  return (
-    <button type="button" {...props}>
-      {children}
-    </button>
-  );
+export default function Button({ ...restProps }: any) {
+  return <button type="button" {...restProps} />;
 }

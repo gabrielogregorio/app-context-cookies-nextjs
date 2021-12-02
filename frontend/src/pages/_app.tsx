@@ -1,27 +1,24 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ThemeContext } from '../core/contexts/ThemeContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { parseCookies } from 'nookies';
+import { themeNamesEnum } from '../core/types/themes';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<string>(parseCookies().USER_THEME || '');
+  const [theme, setTheme] = useState<string>('');
+
+  useEffect(() => {
+    setTheme(parseCookies().USER_THEME ?? '');
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Component {...pageProps} />
-    </ThemeContext.Provider>
+    <div className={`app ${theme === themeNamesEnum.DARK ? 'dark' : ''}`}>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Component {...pageProps} />
+      </ThemeContext.Provider>
+    </div>
   );
-}
-
-export async function getServerSideProps(context: any) {
-  const cookies = parseCookies(context);
-
-  return {
-    props: {
-      USER_THEME: cookies.USER_THEME || 'DARK',
-    },
-  };
 }
 
 export default MyApp;

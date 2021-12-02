@@ -1,7 +1,7 @@
 import { setCookie } from 'nookies';
 import { daysInSeconds } from '../helpers/daysInSeconds';
 
-export const SetThemeCookies = (
+export const defineThemeCookies = (
   nameCookie: string,
   valueCookie: string,
   days: number,
